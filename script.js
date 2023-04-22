@@ -1,8 +1,8 @@
-//* ========== Constants ==========
+//* ==================== Constants ====================
 const TEXTAREA = document.querySelector(".text");
 const BUTTON = document.querySelector(".btn");
 
-//* ========== Functions ==========
+//* ==================== Functions ====================
 // Function that removes spaces from char array
 function removeSpaces(array) {
   let newArray = [];
@@ -61,11 +61,53 @@ function analyze(string) {
   return analysis;
 }
 
-//* ========== Events ==========
+// Function that creates a list
+function list(array) {
+  let listItems = [];
+
+  for (let i = 0; i < array.length; i++) {
+    listItems[i] =
+      "<li class='listItem'>" + array[i][0] + " - " + array[i][1] + "</li>";
+  }
+
+  let list = "<ul class='list'>" + listItems.join("") + "</ul>";
+
+  return list;
+}
+
+// Function that returns the HTML for a textarea
+function textarea() {
+  return "<textarea class='text' placeholder='Add your text here...'></textarea>";
+}
+
+// Function that changes the button
+function btnChange() {
+  $(".btn").toggleClass("submit result");
+  if ($(".btn").hasClass("submit")) {
+    console.log("submit");
+    $(".btn").text("Analyze");
+  } else {
+    console.log("result");
+    $(".btn").text("New Text");
+  }
+}
+
+// Function that changes the content on the page
+function contentChange(array) {
+  if ($(".btn").hasClass("submit")) {
+    $(".text").replaceWith(list(array));
+  } else {
+    $(".list").replaceWith(textarea());
+  }
+}
+
+//* ==================== Events ====================
 BUTTON.addEventListener(
   "click",
   () => {
     let analysis = analyze(TEXTAREA.value);
+    contentChange(analysis);
+    btnChange();
   },
   false
 );
