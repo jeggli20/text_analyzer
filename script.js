@@ -1,32 +1,14 @@
-//* ==================== Constants ====================
-const TEXTAREA = document.querySelector(".text");
-const BUTTON = document.querySelector(".btn");
-
 //* ==================== Functions ====================
-// Function that removes spaces from char array
-function removeSpaces(array) {
-  let newArray = [];
-
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === " ") {
-      continue;
-    } else {
-      newArray.push(array[i]);
-    }
-  }
-
-  return newArray;
-}
-
 // Function that converts string to an array of chars
-// - Trims whitespace from either end
-// - Converts all letter to lowercase
-// - Put string into an array
 function stringToArray(string) {
-  let array = string.trim().toLowerCase().split("");
-  let removed = removeSpaces(array);
+  let array = string
+    .trim() // Trim whitespace form either end
+    .replace(/[^A-Za-z\s]/g, "") // Remove punctuation and numbers
+    .replace(/\s/g, "") // Remove spaces inbetween words
+    .toLowerCase() // Convert all letters to lowercase
+    .split(""); // Put each character in a different array position
 
-  return removed;
+  return array;
 }
 
 // Function that gets unique chars in an array of chars
@@ -34,11 +16,6 @@ function uniqueChars(array) {
   let uniqueArray = [...new Set(array)];
 
   return uniqueArray;
-}
-
-// Function that sorts an array of chars alphabetically
-function alphabetically(array) {
-  return array.sort();
 }
 
 // Function that analyzes text
@@ -62,17 +39,23 @@ function analyze(string) {
 }
 
 // Function that creates a list
-function list(array) {
-  let listItems = [];
+function table(array) {
+  let tableRows = [];
+  let tableHeaders = "<tr><th>Character</th><th># Of Occurrences</th></tr>";
 
   for (let i = 0; i < array.length; i++) {
-    listItems[i] =
-      "<li class='listItem'>" + array[i][0] + " - " + array[i][1] + "</li>";
+    tableRows[i] =
+      "<tr class='table-row'><td class='table-item'>" +
+      array[i][0] +
+      "</td><td>" +
+      array[i][1] +
+      "</td></tr>";
   }
 
-  let list = "<ul class='list'>" + listItems.join("") + "</ul>";
+  let table =
+    "<table class='table'>" + tableHeaders + tableRows.join("") + "</table>";
 
-  return list;
+  return table;
 }
 
 // Function that returns the HTML for a textarea
@@ -84,10 +67,8 @@ function textarea() {
 function btnChange() {
   $(".btn").toggleClass("submit result");
   if ($(".btn").hasClass("submit")) {
-    console.log("submit");
     $(".btn").text("Analyze");
   } else {
-    console.log("result");
     $(".btn").text("New Text");
   }
 }
@@ -95,19 +76,20 @@ function btnChange() {
 // Function that changes the content on the page
 function contentChange(array) {
   if ($(".btn").hasClass("submit")) {
-    $(".text").replaceWith(list(array));
+    $(".text").replaceWith(table(array));
   } else {
-    $(".list").replaceWith(textarea());
+    $(".table").replaceWith(textarea());
   }
 }
 
 //* ==================== Events ====================
-BUTTON.addEventListener(
-  "click",
-  () => {
-    let analysis = analyze(TEXTAREA.value);
-    contentChange(analysis);
-    btnChange();
-  },
-  false
-);
+$(".btn").click(() => {
+  let analysis;
+
+  if ($(".btn").hasClass("submit")) {
+    let textValue = $(".text").val();
+    analysis = analyze(textValue);
+  }
+  contentChange(analysis);
+  btnChange();
+});
