@@ -41,19 +41,23 @@ function analyze(string) {
 // Function that creates a list
 function table(array) {
   let tableRows = [];
-  let tableHeaders = "<tr><th>Character</th><th># Of Occurrences</th></tr>";
+  let tableHeaders =
+    "<tr><th class='table-header'>Letter</th><th class='table-header'># Of Occurrences</th></tr>";
 
   for (let i = 0; i < array.length; i++) {
     tableRows[i] =
       "<tr class='table-row'><td class='table-item'>" +
       array[i][0] +
-      "</td><td>" +
+      "</td><td class='table-item'>" +
       array[i][1] +
       "</td></tr>";
   }
 
   let table =
-    "<table class='table'>" + tableHeaders + tableRows.join("") + "</table>";
+    "<div class='table'><table>" +
+    tableHeaders +
+    tableRows.join("") +
+    "</table></div>";
 
   return table;
 }

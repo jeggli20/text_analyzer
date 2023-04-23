@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans&family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet"
+    />
     <link href="./styles.css" rel="stylesheet" />
     <script
       src="https://code.jquery.com/jquery-3.6.4.min.js"
@@ -15,8 +21,25 @@
   </head>
   <body>
     <main class="container">
-      <textarea class="text" placeholder="Add your text here..."></textarea>
-      <button class="btn submit" type="button">Analyze</button>
+      <h1 class="title">Text Analyzer</h1>
+      <div class="content">
+        <div class="content-chalk">
+          <div class="images">
+            <img
+              class="chalkboard"
+              src="./img/chalkboard.PNG"
+              alt="Chalkboard"
+            />
+            <img
+              class="stand"
+              src="./img/chalkboard_stand.PNG"
+              alt="Chalkboard stand"
+            />
+          </div>
+          <textarea class="text" placeholder="Add your text here..."></textarea>
+        </div>
+        <button class="btn submit" type="button">Analyze</button>
+      </div>
     </main>
   </body>
 </html>

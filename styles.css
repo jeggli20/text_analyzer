@@ -3,11 +3,109 @@
   flex-direction: column;
 }
 
+.btn,
+.text,
+.table-header,
+.table-item {
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.btn,
+.title {
+  font-family: "Encode Sans", sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.images {
+  left: 0;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  width: 550px;
+}
+
+.chalkboard {
+  position: absolute;
+  top: 0;
+  left: 25px;
+}
+
+.stand {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.content-chalk {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .text {
-  margin: 1rem 0;
-  min-height: 100px;
+  background-color: #378442;
+  color: white;
+  font-size: 1.2rem;
+  width: 447px;
+  height: 300px;
+  overflow: auto;
+  padding: 1rem;
+  position: absolute;
+  resize: none;
+  top: 8px;
+}
+
+.text::placeholder {
+  color: white;
 }
 
 .btn {
+  border-radius: 20px;
   cursor: pointer;
+  font-size: 1.2rem;
+  height: 50px;
+  margin: 0 auto 1rem auto;
+  position: absolute;
+  top: 400px;
+  width: 200px;
+}
+
+.btn:focus {
+  background-color: black;
+  color: white;
+}
+
+.table {
+  color: white;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  overflow: auto;
+  padding: 1rem;
+  position: absolute;
+  top: 8px;
+  width: 447px;
+}
+
+.table-header {
+  border: double 5px white;
+  font-size: 1.4rem;
+  padding: 0.3rem 1rem;
+}
+
+.table-item {
+  border: solid 1px white;
+  font-size: 1.2rem;
+  padding: 0.3rem 1rem;
+  text-align: center;
 }
