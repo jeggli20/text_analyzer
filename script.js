@@ -5,7 +5,7 @@ function stringToArray(string) {
     .trim() // Trim whitespace form either end
     .replace(/[^A-Za-z\s]/g, "") // Remove punctuation and numbers
     .replace(/\s/g, "") // Remove spaces between words
-    .toLowerCase() // Convert all letters to lowercase
+    .toUpperCase() // Convert all letters to uppercase
     .split(""); // Put each character in a different array position
 
   return array;
