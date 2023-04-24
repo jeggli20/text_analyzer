@@ -38,7 +38,7 @@ function analyze(string) {
   return analysis;
 }
 
-// Function that creates a list
+// Function that creates a table
 function table(array) {
   let tableHeaders =
     "<tr><th class='table-header'>Letter</th><th class='table-header'># Of Occurrences</th></tr>";
