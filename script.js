@@ -4,7 +4,7 @@ function stringToArray(string) {
   let array = string
     .trim() // Trim whitespace form either end
     .replace(/[^A-Za-z\s]/g, "") // Remove punctuation and numbers
-    .replace(/\s/g, "") // Remove spaces inbetween words
+    .replace(/\s/g, "") // Remove spaces between words
     .toLowerCase() // Convert all letters to lowercase
     .split(""); // Put each character in a different array position
 
@@ -40,9 +40,9 @@ function analyze(string) {
 
 // Function that creates a list
 function table(array) {
-  let tableRows = [];
   let tableHeaders =
     "<tr><th class='table-header'>Letter</th><th class='table-header'># Of Occurrences</th></tr>";
+  let tableRows = [];
 
   for (let i = 0; i < array.length; i++) {
     tableRows[i] =
@@ -94,6 +94,7 @@ $(".btn").click(() => {
     let textValue = $(".text").val();
     analysis = analyze(textValue);
   }
+
   contentChange(analysis);
   btnChange();
 });

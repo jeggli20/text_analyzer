@@ -1,9 +1,22 @@
+:root {
+  --primary-color: #378442;
+  --primary-color-light: greenyellow;
+  --primary-color-dark: darkgreen;
+  --secondary-color: #d0ab8d;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.btn,
 .text,
 .table-header,
 .table-item {
@@ -20,6 +33,7 @@
   text-align: center;
 }
 
+/* Chalkboard */
 .images {
   left: 0;
   margin: 0 auto;
@@ -30,13 +44,13 @@
 
 .chalkboard {
   position: absolute;
-  top: 0;
   left: 25px;
+  top: 0;
 }
 
 .stand {
   position: relative;
-  top: 0;
+  bottom: 47px;
   left: 0;
 }
 
@@ -52,60 +66,159 @@
   position: relative;
 }
 
+/* Textarea */
 .text {
-  background-color: #378442;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   font-size: 1.2rem;
-  width: 447px;
-  height: 300px;
+  height: 192px;
+  outline: none;
   overflow: auto;
   padding: 1rem;
   position: absolute;
   resize: none;
-  top: 8px;
+  top: 11px;
+  width: 445px;
 }
 
 .text::placeholder {
-  color: white;
+  color: var(--white);
 }
 
+/* Button */
 .btn {
   border-radius: 20px;
+  box-shadow: 4px 4px 0 0 black;
   cursor: pointer;
   font-size: 1.2rem;
   height: 50px;
   margin: 0 auto 1rem auto;
   position: absolute;
-  top: 400px;
+  top: 300px;
   width: 200px;
 }
 
+.btn:hover,
 .btn:focus {
-  background-color: black;
-  color: white;
+  font-weight: bold;
 }
 
+.btn:active {
+  box-shadow: 2px 2px 0 0 black;
+  transform: translate(2px, 2px);
+}
+
+/* Table */
 .table {
-  color: white;
+  color: var(--white);
   display: flex;
-  height: 300px;
+  height: 194px;
   justify-content: center;
   overflow: auto;
   padding: 1rem;
   position: absolute;
-  top: 8px;
-  width: 447px;
+  top: 11px;
+  width: 450px;
 }
 
 .table-header {
-  border: double 5px white;
+  border: double 5px var(--white);
   font-size: 1.4rem;
   padding: 0.3rem 1rem;
 }
 
 .table-item {
-  border: solid 1px white;
+  border: solid 1px var(--white);
   font-size: 1.2rem;
   padding: 0.3rem 1rem;
   text-align: center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--white);
+  border: 1px solid var(--primary-color-dark);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-color: var(--primary-color-light);
+}
+
+@media screen and (max-width: 560px) {
+  .container {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+  }
+
+  .title {
+    border-bottom: solid 3px var(--white);
+    color: var(--white);
+    padding-bottom: 2rem;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .images {
+    display: none;
+  }
+
+  .btn {
+    background-color: #378442;
+    border: none;
+    box-shadow: none;
+    color: var(--white);
+    font-family: "Gloria Hallelujah", cursive;
+    font-size: 2rem;
+    margin: 1.5rem auto 2rem auto;
+    outline: none;
+    position: static;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
+  .btn:active {
+    box-shadow: none;
+    font-weight: bold;
+    transform: none;
+  }
+
+  .table {
+    height: auto;
+    overflow: visible;
+    position: static;
+    width: 80%;
+  }
+
+  .text {
+    border: none;
+    height: 50vh;
+    position: static;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .table-header {
+    font-size: 1rem;
+  }
 }
