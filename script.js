@@ -83,6 +83,7 @@ function contentChange(array) {
     $(".text").replaceWith(table(array));
   } else {
     $(".table").replaceWith(textarea());
+    $(".text").focus();
   }
 }
 

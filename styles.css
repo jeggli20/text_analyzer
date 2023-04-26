@@ -156,6 +156,7 @@ body {
 @media screen and (max-width: 560px) {
   .container {
     background-color: var(--primary-color);
+    justify-content: start;
     min-height: 100vh;
   }
 
@@ -168,6 +169,10 @@ body {
   .content {
     display: flex;
     flex-direction: column;
+  }
+
+  .content-chalk {
+    min-height: 25vh;
   }
 
   .images {
